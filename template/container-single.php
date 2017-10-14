@@ -1,4 +1,5 @@
                 <div class="col-md-8">
+                    <h1 class="sr-only"><?php the_title(); ?></h1>
                     <?php require_once(dirname(__FILE__) . '/part-post-content.php'); ?>
                     <div class="row">
                         <div class="col-md-12 post-may-like">
