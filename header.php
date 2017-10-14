@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="/static/v1/mip.css">
+        <link rel="stylesheet" type="text/css" href="https://mipcache.bdstatic.com/static/v1/mip.css">
         <link rel="canonical" href="<?php global $Object_MIP;$Object_MIP->print_current_url(); ?>">
         <title><?php global $Object_Show;$Object_Show->print_page_title(); ?></title>
         <style mip-custom>

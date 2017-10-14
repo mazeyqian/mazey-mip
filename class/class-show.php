@@ -34,6 +34,13 @@ class Class_Show {
         the_title();
         echo '</a>';
     }
+
+    /* 替换#link为百度搜索 */
+    public function replaceLink($str) {
+        $link_pattern = '/<a\s+href=[\'|\"]#link[\'|\"]\s+target=[\'|\"]_blank[\'|\"]>(.*)<\/a>/U';
+        $link_replace = "<a href='https://www.baidu.com/s?ie=UTF-8&wd=$1' target='_blank'>$1</a>";
+        return preg_replace($link_pattern, $link_replace, $str);
+    }
     /* public function print_post_title_link() {
         echo 'link';
     } */
