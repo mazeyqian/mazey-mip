@@ -9,9 +9,13 @@
 .post-index{
 	.border-bottom(1px);
 	padding: 14px 0;
-	
+
 	&>header>p.post-index-detail{
 	   .post-detail;
+	}
+
+	ul.post-past{
+		list-style: none;
 	}
 }
 
@@ -28,7 +32,7 @@
 }
 
 .post-sidebar{
-    padding-top: 14px; 
+    padding-top: 14px;
 }
 
 .border-bottom(@width:1px){
@@ -40,11 +44,11 @@
 .post-may-like{
     padding-top: 14px;
     padding-bottom: 14px;
-    
+
     &~div>p:first-child{
         margin-bottom: 2px;
     }
-    
+
     &~div>p.post-single-time{
         .post-detail;
     }
@@ -114,7 +118,7 @@
     margin: 0 6px 8px 0;
     padding: 6px 10px;
     transition: .3s;
-    
+
     &:hover{
         background:#4d8ffb;
         color:#fff;
@@ -123,7 +127,7 @@
 
 .post-category-header{
     padding-top: 14px;
-    
+
     &>h3{
         .border-bottom(2px);
         padding: 0 0 3px;
@@ -134,24 +138,24 @@
 .post-404{
     padding-top: 50px;
     padding-bottom: 50px;
-    
+
     &>h1{
         font-size: 2em;
         font-weight: 400;
         padding-bottom: 9px;
     }
-    
+
     &>p{
         color:@mazey-mip-font-color-light;
     }
-    
+
 }
 
 article.post-index:last-of-type{
     border-bottom-color: transparent;
 }
 
-.current-menu-item,
+/*.current-menu-item,
 .current_page_item{
     .active;
-}
+}*/
