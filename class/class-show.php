@@ -38,7 +38,7 @@ class Class_Show {
     /* 替换#link为百度搜索 */
     public function replaceLink($str) {
         $link_pattern = '/<a\s+href=[\'|\"]#link[\'|\"]\s+target=[\'|\"]_blank[\'|\"]>(.*)<\/a>/U';
-        $link_replace = "<a href='http://www.zhibaifa.com/?s=$1' target='_blank'>$1</a>";
+        $link_replace = "<a href='" . get_bloginfo('url') . "/?s=$1' target='_blank'>$1</a>";
         return preg_replace($link_pattern, $link_replace, $str);
     }
     /* public function print_post_title_link() {
