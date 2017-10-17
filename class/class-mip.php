@@ -18,4 +18,9 @@ class Class_MIP {
     public function print_current_url() {
         echo $this->return_current_url();
     }
+
+    /* 推送至百度 */
+    public function pushBD() {
+
+    }
 }
