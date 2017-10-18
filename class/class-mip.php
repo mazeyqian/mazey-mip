@@ -38,8 +38,19 @@ class Class_MIP {
 
     public function pushBDAndWriteLog($arr) {
         global $wpdb;
+        $thisPostID = get_the_ID() != false ? get_the_ID() : -1;
+        /* 如果 提交成功过 + 文章页  则直接返回false */
+        if($this->isThisPostIDTodayPush($thisPostID) && get_the_ID() != -1):
+            return false;
+        endif;
+        //die('test');
         $returnPush = $this->pushBD($arr);
         $returnPushArr = json_decode($returnPush, true);
+        /* 日志文本 */
+        $log_contentArr = array();
+        $log_contentArr[] = array('ret' => $returnPushArr);
+        $log_contentArr[] = array('link' => $arr);
+        $log_content = json_encode($log_contentArr);
         $log_type = 'unknow';
         if(array_key_exists('success_mip', $returnPushArr)):
             $log_type = 'success';
@@ -48,12 +59,25 @@ class Class_MIP {
         endif;
         $data = array(
             'log_user_id' => '1',
-            'log_content' => $returnPush,
+            'log_content' => $log_content,
             'log_type' => $log_type,
-            'log_time' => date("Y-m-d H:i:s")
+            'log_time' => date("Y-m-d H:i:s"),
+            'log_post_id' => $thisPostID
         );
         $ret = $wpdb->insert($wpdb->prefix . 'log', $data);
         /* echo 'test-class';
         return $ret; */
+    }
+
+    private function isThisPostIDTodayPush($ID) {
+        global $wpdb;
+        $ret = $wpdb->get_row("select 1 from " . $wpdb->prefix . "log where log_post_id = {$ID} ;");
+        //var_dump($ret);
+        //var_dump("select log_post_id from " . $wpdb->prefix . "log where log_post_id = {$ID} ;");
+        if($ret == NULL):
+            return false;
+        else:
+            return true;
+        endif;
     }
 }
