@@ -1,5 +1,5 @@
 <div class="col-md-4">
-    <aside class="post-sidebar">
+    <aside class="post-sidebar hidden-xs">
         <h3>文章搜索</h3>
         <div class="post-search">
             <mip-form method="get" url="<?php bloginfo('url'); ?>">
