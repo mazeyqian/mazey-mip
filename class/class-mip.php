@@ -38,9 +38,15 @@ class Class_MIP {
 
     public function pushBDAndWriteLog($arr) {
         global $wpdb;
+        /* 文章页面才提交 */
+        if(!is_single()):
+            /* echo '123'; */
+            return false;
+        endif;
+        /* 获取ID */
         $thisPostID = get_the_ID() != false ? get_the_ID() : -1;
-        /* 如果 提交成功过 + 文章页  则直接返回false */
-        if($this->isThisPostIDTodayPush($thisPostID) && get_the_ID() != -1):
+        /* 如果 提交成功过返回false */
+        if($this->isThisPostIDTodayPush($thisPostID)):
             return false;
         endif;
         //die('test');
