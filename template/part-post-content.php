@@ -5,7 +5,14 @@
                     ?>
                     <article class="post-index">
                         <header>
-                            <h2><?php global $Object_Show;$Object_Show->print_post_title_link(); ?></h2>
+                            <h2><?php
+                                global $Object_Show;
+                                if (is_single()) {
+                                    the_title();
+                                } else {
+                                    $Object_Show->print_post_title_link();
+                                }
+                                ?></h2>
                             <p class="post-index-detail">时间：<?php the_time('Y年m月d日');?> / 作者：<?php the_author(); ?></p>
                         </header>
                         <div>
