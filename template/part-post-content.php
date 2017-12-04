@@ -13,7 +13,7 @@
                                     $Object_Show->print_post_title_link();
                                 }
                                 ?></h2>
-                            <p class="post-index-detail">时间：<?php the_time('Y年m月d日');?> / 作者：<?php the_author(); ?></p>
+                            <p class="post-index-detail">日期：<?php the_time('Y年m月d日，l，G时i分s秒');?> / 作者：<?php the_author(); ?></p>
                         </header>
                         <div>
                             <p><?php echo $Object_Show->replaceLink(get_the_content()); ?></p>
