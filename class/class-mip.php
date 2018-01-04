@@ -77,7 +77,7 @@ class Class_MIP {
 
     private function isThisPostIDTodayPush($ID) {
         global $wpdb;
-        $ret = $wpdb->get_row("select 1 from " . $wpdb->prefix . "log where log_post_id = {$ID} ;");
+        $ret = $wpdb->get_row("select 1 from " . $wpdb->prefix . "log where log_post_id = {$ID} and timestampdiff(day,log_time,now())<=14;");
         //var_dump($ret);
         //var_dump("select log_post_id from " . $wpdb->prefix . "log where log_post_id = {$ID} ;");
         if($ret == NULL):
