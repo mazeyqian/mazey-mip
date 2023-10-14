@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-        <!-- <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" /> -->
+        <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
         <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/mip.css">
         <link rel="canonical" href="<?php
                 global $Object_MIP;

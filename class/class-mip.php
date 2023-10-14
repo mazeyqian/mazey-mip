@@ -20,9 +20,12 @@ class Class_MIP {
     }
 
     /* 推送至百度 */
-    private function pushBD($arr) {
+    private function pushBD($arr, $token) {
         $urls = $arr;
-        $api = 'http://data.zz.baidu.com/urls?site=www.zhibaifa.com&token=jtS7XW0ZjaEB8wLq&type=mip';
+        if (empty($token)) {
+            return false;
+        }
+        $api = 'http://data.zz.baidu.com/urls?site=yourwebsite.example.com&token=' . $token . '&type=mip';
         $ch = curl_init();
         $options =  array(
             CURLOPT_URL => $api,
@@ -40,7 +43,6 @@ class Class_MIP {
         global $wpdb;
         /* 文章页面才提交 */
         if(!is_single()):
-            /* echo '123'; */
             return false;
         endif;
         /* 获取ID */
@@ -50,7 +52,10 @@ class Class_MIP {
             return false;
         endif;
         //die('test');
-        $returnPush = $this->pushBD($arr);
+        $returnPush = $this->pushBD($arr, '');
+        if ($returnPush === false) {
+            return false;
+        }
         $returnPushArr = json_decode($returnPush, true);
         /* 日志文本 */
         $log_contentArr = array();
@@ -71,15 +76,11 @@ class Class_MIP {
             'log_post_id' => $thisPostID
         );
         $ret = $wpdb->insert($wpdb->prefix . 'log', $data);
-        /* echo 'test-class';
-        return $ret; */
     }
 
     private function isThisPostIDTodayPush($ID) {
         global $wpdb;
         $ret = $wpdb->get_row("select 1 from " . $wpdb->prefix . "log where log_post_id = {$ID} and timestampdiff(day,log_time,now())<=14;");
-        //var_dump($ret);
-        //var_dump("select log_post_id from " . $wpdb->prefix . "log where log_post_id = {$ID} ;");
         if($ret == NULL):
             return false;
         else:
